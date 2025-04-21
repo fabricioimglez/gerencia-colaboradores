@@ -1,0 +1,15 @@
+<div class="row no-gutters m-2">
+    <div class="col-12 mb-3">
+        <label class="form-label">Nome</label>
+        <input type="text" [(ngModel)]="colaborador.nome" class="form-control borda-input">
+    </div>
+
+    <div class="col-6">
+        <label class="form-label">Email</label>
+        <input type="email" [(ngModel)]="colaborador.email" class="form-control borda-input">
+    </div>
+    <div class="col-6">
+        <label class="form-label">Telefone</label>
+        <input type="text" [(ngModel)]="colaborador.telefone" inputmode="numeric" pattern="[0-9]*" class="form-control borda-input">
+    </div>
+</div>

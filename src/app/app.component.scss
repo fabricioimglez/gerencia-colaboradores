@@ -1,0 +1,11 @@
+.sidebar {
+    width: 250px;
+    transition: width 0.3s;
+    min-height: 100vh;
+  }
+  .sidebar.collapsed {
+    width: 60px;
+  }
+  .nav-link {
+    white-space: nowrap;
+  }

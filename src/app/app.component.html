@@ -1,0 +1,38 @@
+<div class="d-flex">
+  <div [class.collapsed]="isCollapsed" class="sidebar bg-dark text-white d-flex flex-column justify-content-between">
+    <div class="nav flex-column p-2">
+      <a href="#" class="nav-link text-white">
+        <ng-container *ngIf="!isCollapsed">
+          <i class="bi bi-house"></i> Página Inicial
+        </ng-container>
+        <ng-container *ngIf="isCollapsed">
+          <i class="bi bi-house"></i>
+        </ng-container>
+      </a>
+      <a href="/colaboradores" class="nav-link text-white">
+        <ng-container *ngIf="!isCollapsed">
+          <i class="bi bi-person-lines-fill"></i> Colaboradores
+        </ng-container>
+        <ng-container *ngIf="isCollapsed">
+          <i class="bi bi-person-lines-fill"></i>
+        </ng-container>
+      </a>
+    </div>
+    <div class="text-center p-2" *ngIf="!isCollapsed">
+      <button class="btn btn-outline-light btn-sm" (click)="toggleMenu()"><i class="bi bi-arrow-left"></i></button>
+    </div>
+    <div class="text-center p-2" *ngIf="isCollapsed">
+      <button class="btn btn-outline-light btn-sm" (click)="toggleMenu()"><i class="bi bi-arrow-right"></i></button>
+    </div>
+  </div>
+  <div class="flex-grow-1 d-flex flex-column">
+    <div class="topbar bg-dark text-white p-2">
+      <div>{{tituloPagina}}</div>
+    </div>
+    <div class="content p-3">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>
+
+<i class="bi bi-alarm" style="font-size: 2rem;"></i>
