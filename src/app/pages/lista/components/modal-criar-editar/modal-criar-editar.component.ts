@@ -15,9 +15,37 @@ export class ModalCriarEditarComponent {
     public dialogRef: MatDialogRef<ModalCriarEditarComponent>,
   ) { }
 
-  ngOnInit(): void {
-    console.log(this.colaborador);
-    
+  flagsInvalidos = {
+    nome: false,
+    email: false,
+    telefone: false
+  };
+
+  async validaColaborador() {
+    this.flagsInvalidos = {
+      nome: false,
+      email: false,
+      telefone: false
+    }
+
+    // Validação nome
+    if (!this.colaborador.nome || this.colaborador.nome.trim() === '') {
+      this.flagsInvalidos.nome = true;
+    }
+
+    // Validação email
+    if (!this.colaborador.email || !this.colaborador.email.includes('@')) {
+      this.flagsInvalidos.email = true;
+    }
+
+    // Validação telefone
+    if (!this.colaborador.telefone || this.colaborador.telefone.trim().length < 11) {
+      this.flagsInvalidos.telefone = true;
+    }
+
   }
 
+  cancelar() {
+    this.dialogRef.close(false);
+  }
 }

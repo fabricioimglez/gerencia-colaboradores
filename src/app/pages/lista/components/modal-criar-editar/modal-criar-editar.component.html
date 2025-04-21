@@ -1,15 +1,33 @@
 <div class="row no-gutters m-2">
+    <div class="col-12 d-flex justify-content-end">
+        <i class="bi bi-x-lg cursor-poiter" (click)="cancelar()"></i>
+    </div>
     <div class="col-12 mb-3">
         <label class="form-label">Nome</label>
-        <input type="text" [(ngModel)]="colaborador.nome" class="form-control borda-input">
+        <input type="text" (blur)="validaColaborador()" (focus)="validaColaborador()" [(ngModel)]="colaborador.nome"
+            class="form-control borda-input">
+        <small *ngIf="flagsInvalidos.nome" style="color:red;">Nome inválido</small>
     </div>
 
     <div class="col-6">
         <label class="form-label">Email</label>
-        <input type="email" [(ngModel)]="colaborador.email" class="form-control borda-input">
+        <input type="email" (blur)="validaColaborador()" (focus)="validaColaborador()" [(ngModel)]="colaborador.email"
+            class="form-control borda-input">
+        <small *ngIf="flagsInvalidos.email" style="color:red;">Email inválido</small>
     </div>
     <div class="col-6">
         <label class="form-label">Telefone</label>
-        <input type="text" [(ngModel)]="colaborador.telefone" inputmode="numeric" pattern="[0-9]*" class="form-control borda-input">
+        <input type="text" (blur)="validaColaborador()" (focus)="validaColaborador()" [(ngModel)]="colaborador.telefone"
+            inputmode="numeric" pattern="[0-9]*" class="form-control borda-input">
+        <small *ngIf="flagsInvalidos.telefone" style="color:red;">Telefone inválido</small>
+    </div>
+
+    <div class="d-flex justify-content-end pt-4">
+        <div class="pe-2">
+            <button type="button" class="btn btn-success pe-2">Salvar</button>
+        </div>
+        <div>
+            <button type="button" class="btn btn-outline-primary" (click)="cancelar()">Cancelar</button>
+        </div>
     </div>
 </div>

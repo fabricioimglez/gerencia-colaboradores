@@ -76,7 +76,6 @@ export class ListaComponent {
   criarEditar(colaborador: any = null) {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.width = '600px';
-    dialogConfig.height = '400px';
     dialogConfig.data = JSON.parse(JSON.stringify(colaborador));
     
 
