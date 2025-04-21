@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Colaborador } from '../model/colaborador';
 
 @Injectable({
   providedIn: 'root'
@@ -20,11 +21,11 @@ export class ColaboradoresService {
     return this.http.get<ColaboradoresService>(`${this.API_URL}/${id}`);
   }
 
-  criaColaborador(colaborador: ColaboradoresService): Observable<ColaboradoresService> {
+  criaColaborador(colaborador: Colaborador): Observable<ColaboradoresService> {
     return this.http.post<ColaboradoresService>(this.API_URL, colaborador);
   }
 
-  editaColaborador(id: string, colaborador: Partial<ColaboradoresService>): Observable<any> {
+  editaColaborador(id: number, colaborador: Partial<Colaborador>): Observable<any> {
     return this.http.put(`${this.API_URL}/${id}`, colaborador);
   }
 
