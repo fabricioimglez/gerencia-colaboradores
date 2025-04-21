@@ -3,17 +3,37 @@
 
 
 .w-3 {
-    width: 3% !important;
-  }
+  width: 3% !important;
+}
 
-  .mat-mdc-dialog-container .mdc-dialog__surface {
-    border-radius: 5px !important;
-  }
+.mat-mdc-dialog-container .mdc-dialog__surface {
+  border-radius: 5px !important;
+}
+
+.borda-input {
+  border-color: #B7B2B2;
+}
 
 .cursor-poiter {
-    cursor: pointer;
+  cursor: pointer;
 }
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
