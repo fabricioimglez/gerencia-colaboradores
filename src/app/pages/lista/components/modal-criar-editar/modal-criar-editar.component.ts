@@ -51,13 +51,19 @@ export class ModalCriarEditarComponent {
   salvar() {
     if (this.colaborador._id) {
       this.colaboradoresService.editaColaborador(this.colaborador._id, this.colaborador).subscribe(r => {
-        this.dialogRef.close(true);
-        this.toastr.success("Colaborador alterado!");
+        if (r.status) {
+          this.dialogRef.close(true);
+          this.toastr.success(r.info);
+        } else {
+          this.dialogRef.close(true);
+          this.toastr.error(r.info);
+        }
+
       });
     } else {
       this.colaboradoresService.criaColaborador(this.colaborador).subscribe(r => {
         this.dialogRef.close(true);
-        this.toastr.success("Colaborador salvo!");
+        this.toastr.success("Colaborador criado!");
       });
     }
   }

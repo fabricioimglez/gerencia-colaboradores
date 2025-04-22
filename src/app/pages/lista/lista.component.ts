@@ -101,13 +101,16 @@ export class ListaComponent {
     });
   }
 
-  async excluirComentario(_id: any) {
-    this.colaboradoresService.excluiColaborador(_id).subscribe((r: any) => {
-      if (r.status) {
-        this.toastr.success(r.info);
-      } else {
-        this.toastr.error(r.info);
-      }
-    });
+  async excluir(colaborador: any) {
+    if (confirm(`Deseja excluir ${colaborador.nome} ? `)) {
+      this.colaboradoresService.excluiColaborador(colaborador._id).subscribe((r: any) => {
+        if (r.status) {
+          this.toastr.success(r.info);
+          this.atualizaLista();
+        } else {
+          this.toastr.error(r.info);
+        }
+      });
+    }
   }
 }
