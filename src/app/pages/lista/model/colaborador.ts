@@ -1,6 +1,14 @@
 export class Colaborador {
-    id_colaborador!: number;
+    _id?: string;
     nome!: string;
     email?: string;
     telefone?: string;
+
+    static novo(): Colaborador {
+        return {
+            nome: '',
+            email: '',
+            telefone: ""
+        };
+    }
 }

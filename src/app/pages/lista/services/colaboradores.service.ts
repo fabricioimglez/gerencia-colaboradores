@@ -7,7 +7,7 @@ import { Colaborador } from '../model/colaborador';
   providedIn: 'root'
 })
 export class ColaboradoresService {
-  private API_URL = 'http://localhost:3000/users';
+  private API_URL = 'http://localhost:3000/colaboradores';
 
   constructor(
     private http: HttpClient
@@ -25,7 +25,7 @@ export class ColaboradoresService {
     return this.http.post<ColaboradoresService>(this.API_URL, colaborador);
   }
 
-  editaColaborador(id: number, colaborador: Partial<Colaborador>): Observable<any> {
+  editaColaborador(id: string, colaborador: Partial<Colaborador>): Observable<any> {
     return this.http.put(`${this.API_URL}/${id}`, colaborador);
   }
 

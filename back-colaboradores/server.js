@@ -1,8 +1,11 @@
 const express = require('express');
+const cors = require('cors');
 const app = express();
+
 const colaboradoresRoutes = require('./routes/colaboradores');
 
 app.use(express.json());
+app.use(cors());
 
 app.use('/colaboradores', colaboradoresRoutes);
 

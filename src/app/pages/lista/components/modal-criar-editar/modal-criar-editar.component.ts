@@ -12,13 +12,16 @@ import { ColaboradoresService } from '../../services/colaboradores.service';
   styleUrl: './modal-criar-editar.component.scss'
 })
 export class ModalCriarEditarComponent {
+  colaborador: Colaborador;
 
   constructor(
-    @Inject(MAT_DIALOG_DATA) public colaborador: Colaborador,
+    @Inject(MAT_DIALOG_DATA) public data: Colaborador | null,
     public dialogRef: MatDialogRef<ModalCriarEditarComponent>,
-    private colaboradoresService : ColaboradoresService,
+    private colaboradoresService: ColaboradoresService,
     private toastr: ToastrService,
-  ) { }
+  ) {
+    this.colaborador = data ? data : Colaborador.novo();
+  }
 
   flagsInvalidos = {
     nome: false,
@@ -46,21 +49,21 @@ export class ModalCriarEditarComponent {
   }
 
   salvar() {
-    if(this.colaborador.id_colaborador){
+    if (this.colaborador._id) {
+      this.colaboradoresService.editaColaborador(this.colaborador._id, this.colaborador).subscribe(r => {
+        this.dialogRef.close(true);
+        this.toastr.success("Colaborador alterado!");
+      });
+    } else {
       this.colaboradoresService.criaColaborador(this.colaborador).subscribe(r => {
         this.dialogRef.close(true);
         this.toastr.success("Colaborador salvo!");
-      })
-    } else {
-      this.colaboradoresService.editaColaborador(this.colaborador.id_colaborador, this.colaborador).subscribe(r => {
-        this.dialogRef.close(true);
-        this.toastr.success("Colaborador alterado!");
-      })
+      });
     }
-   
   }
 
   cancelar() {
     this.dialogRef.close(false);
   }
+
 }
