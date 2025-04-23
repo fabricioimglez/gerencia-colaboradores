@@ -19,15 +19,6 @@ router.get('/', (req, res) => {
   });
 });
 
-// Buscar colaborador por ID
-// router.get('/:id', (req, res) => {
-//   db.findOne({ _id: req.params.id }, (err, colaborador) => {
-//     if (err) return res.status(500).send(err);
-//     if (!colaborador) return res.status(404).send('Colaborador não encontrado');
-//     res.json(colaborador);
-//   });
-// });
-
 // Atualizar colaborador
 router.put('/:id', (req, res) => {
   db.update({ _id: req.params.id }, { $set: req.body }, {}, (err, numReplaced) => {

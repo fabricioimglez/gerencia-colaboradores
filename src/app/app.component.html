@@ -1,4 +1,4 @@
-<div class="d-flex">
+<div *ngIf="exibirLayout" class="d-flex">
   <div [class.collapsed]="isCollapsed" class="sidebar bg-dark text-white d-flex flex-column justify-content-between">
     <div class="nav flex-column p-2">
       <a href="#" class="nav-link text-white">
@@ -33,4 +33,8 @@
       <router-outlet></router-outlet>
     </div>
   </div>
+</div>
+
+<div *ngIf="!exibirLayout" class="flex-grow-1 d-flex flex-column">
+  <router-outlet></router-outlet>
 </div>

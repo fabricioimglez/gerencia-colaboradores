@@ -3,11 +3,13 @@ const cors = require('cors');
 const app = express();
 
 const colaboradoresRoutes = require('./routes/colaboradores');
+const loginRoutes = require('./routes/login');
 
 app.use(express.json());
 app.use(cors());
 
 app.use('/colaboradores', colaboradoresRoutes);
+app.use('/login', loginRoutes);
 
 const PORT = 3000;
 app.listen(PORT, () => {

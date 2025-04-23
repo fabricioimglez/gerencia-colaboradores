@@ -11,8 +11,15 @@ import { filter, map, mergeMap } from 'rxjs/operators';
 })
 export class AppComponent {
   tituloPagina = "";
+  exibirLayout = true;
 
   constructor(private router: Router, private activatedRoute: ActivatedRoute) {
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        this.exibirLayout = !event.url.includes('/login'); // Oculta o layout no login
+      }
+    });
+
     this.router.events.pipe(
       filter(event => event instanceof NavigationEnd),
       map(() => {
@@ -33,5 +40,10 @@ export class AppComponent {
 
   toggleMenu() {
     this.isCollapsed = !this.isCollapsed;
+  }
+
+  logout() {
+    localStorage.removeItem('logado');
+    this.router.navigate(['/login']);
   }
 }
