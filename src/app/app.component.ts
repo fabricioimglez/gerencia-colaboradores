@@ -12,8 +12,10 @@ import { filter, map, mergeMap } from 'rxjs/operators';
 export class AppComponent {
   tituloPagina = "";
   exibirLayout = true;
+  userName: any = ''
 
   constructor(private router: Router, private activatedRoute: ActivatedRoute) {
+     this.userName = localStorage.getItem('userName');
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
         this.exibirLayout = !event.url.includes('/login'); // Oculta o layout no login

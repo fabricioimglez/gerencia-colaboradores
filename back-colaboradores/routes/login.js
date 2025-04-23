@@ -3,9 +3,9 @@ const router = express.Router();
 const dbUsuarios = require('../dbUsuarios');
 
 // Cria usuário padrão se não existir
-dbUsuarios.findOne({ username: 'demo' }, (err, doc) => {
+dbUsuarios.findOne({ username: 'UserTeste' }, (err, doc) => {
   if (!doc) {
-    dbUsuarios.insert({ username: 'demo', password: '1234' }); // senha simples para demo
+    dbUsuarios.insert({ username: 'UserTeste', password: 'senha123' }); // senha simples para demo
   }
 });
 

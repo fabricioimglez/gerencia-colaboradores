@@ -24,6 +24,7 @@ login() {
       if (res.success) {
         // Armazena um flag simples (só para a demo)
         localStorage.setItem('logado', 'true');
+        localStorage.setItem('userName',  this.username);
         this.router.navigate(['/']);
       } else {
         this.errorMessage = 'Usuário ou senha inválidos.';
