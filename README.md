@@ -1,59 +1,62 @@
 # GerenciaColaboradores
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.8.
+Projeto gerado utilizando [Angular CLI](https://github.com/angular/angular-cli) version 19.2.8.
 
-## Development server
+# 📇 Gerência de Colaboradores
 
-To start a local development server, run:
+Uma aplicação completa para **gerenciar contatos de colaboradores**, feita com Angular no frontend e Node.js com NeDB no backend.
+
+## 🚀 Demonstração
+
+Acesse em: [http://localhost:4200](http://localhost:4200)
+
+> 🔐 **Login de demonstração:**  
+> Usuário: `UserTeste`  
+> Senha: `senha123`
+
+---
+
+## ✨ Funcionalidades
+
+- 🔐 Sistema de **login**
+- 📋 **Listagem** de colaboradores com opção de **edição**
+- 📞 Link direto para **WhatsApp Web**
+- ✉️ Link direto para **enviar e-mail**
+- 💙 Efeitos visuais ao passar o mouse
+- 🌐 Backend Node.js com banco de dados local (NeDB)
+
+---
+
+## 🖼️ Preview
+
+> *(Adicione aqui um GIF ou imagem da interface principal do projeto)*
+
+---
+
+## 🛠️ Tecnologias Utilizadas
+
+### Frontend
+- [Angular 19](https://angular.io/)
+- [@angular/material](https://material.angular.io/)
+- [@angular/animations](https://angular.io/guide/animations)
+- [@angular/cdk](https://material.angular.io/cdk)
+- [Bootstrap 5](https://getbootstrap.com/)
+- [Bootstrap Icons](https://icons.getbootstrap.com/)
+- [ngx-toastr](https://www.npmjs.com/package/ngx-toastr)
+- [TypeScript 5.7](https://www.typescriptlang.org/)
+
+### Backend
+- [Node.js 22.14](https://nodejs.org/)
+- [Express 5](https://expressjs.com/)
+- [NeDB](https://github.com/louischatriot/nedb)
+- [CORS](https://www.npmjs.com/package/cors)
+
+---
+
+## 🧑‍💻 Como executar o projeto
+
+### 🔧 1. Clonar o repositório
 
 ```bash
-ng serve
-```
-
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+git clone https://github.com/seuusuario/gerencia-colaboradores.git
+cd gerencia-colaboradores
