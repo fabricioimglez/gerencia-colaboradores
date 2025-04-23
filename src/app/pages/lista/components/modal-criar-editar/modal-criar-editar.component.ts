@@ -13,6 +13,8 @@ import { ColaboradoresService } from '../../services/colaboradores.service';
 })
 export class ModalCriarEditarComponent {
   colaborador: Colaborador;
+  camposTocados: Record<string, boolean> = {};
+  flagsInvalidos: Record<string, boolean> = {};
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: Colaborador | null,
@@ -23,53 +25,67 @@ export class ModalCriarEditarComponent {
     this.colaborador = data ? data : Colaborador.novo();
   }
 
-  flagsInvalidos = {
-    nome: false,
-    email: false,
-    telefone: false
-  };
+  tocarCampo(campo: keyof Colaborador) {
+    this.camposTocados[campo] = true;
+    this.validarCampos();
+  }
 
-  async validaColaborador() {
+  deveMostrarErro(campo: keyof Colaborador): boolean {
+    return this.flagsInvalidos[campo] && this.camposTocados[campo];
+  }
+
+  validarCampos() {
     this.flagsInvalidos = {
-      nome: false,
-      email: false,
-      telefone: false
-    }
+      nome: !this.colaborador.nome || this.colaborador.nome.trim() === '',
+      email: this.colaborador.email ? !this.colaborador.email.includes('@') : false, 
+      telefone: this.colaborador.telefone? this.colaborador.telefone.replace(/\D/g, '').length < 11: false
+    };
+  }
 
-    if (!this.colaborador.nome || this.colaborador.nome.trim() === '') {
-      this.flagsInvalidos.nome = true;
+  permitirSomenteNumeros(event: KeyboardEvent) {
+    const charCode = event.charCode;
+    if (charCode < 48 || charCode > 57) {
+      event.preventDefault();
     }
-    if (!this.colaborador.email || !this.colaborador.email.includes('@')) {
-      this.flagsInvalidos.email = true;
-    }
-    if (!this.colaborador.telefone || this.colaborador.telefone.trim().length < 11) {
-      this.flagsInvalidos.telefone = true;
-    }
+  }
 
+  formatarTelefone() {
+    if (this.colaborador.telefone) {
+      let numeros = this.colaborador.telefone.replace(/[^\d]/g, '');
+      numeros = numeros.slice(0, 11);
+
+      this.colaborador.telefone = numeros.replace(/^(\d{0,2})(\d{0,5})(\d{0,4})$/,
+        (match, ddd, prefixo, sufixo) => {
+          let resultado = '';
+          if (ddd) resultado += `(${ddd}`;
+          if (ddd.length === 2) resultado += ') ';
+          if (prefixo) resultado += prefixo;
+          if (sufixo) resultado += `-${sufixo}`;
+          return resultado;
+        }
+      );
+    }
   }
 
   salvar() {
-    if (this.colaborador._id) {
-      this.colaboradoresService.editaColaborador(this.colaborador._id, this.colaborador).subscribe(r => {
-        if (r.status) {
-          this.dialogRef.close(true);
-          this.toastr.success(r.info);
-        } else {
-          this.dialogRef.close(true);
-          this.toastr.error(r.info);
-        }
+    this.validarCampos();
 
-      });
-    } else {
-      this.colaboradoresService.criaColaborador(this.colaborador).subscribe(r => {
-        this.dialogRef.close(true);
-        this.toastr.success("Colaborador criado!");
-      });
+    if (Object.values(this.flagsInvalidos).some(invalido => invalido)) {
+      this.toastr.error('Preencha os campos corretamente.');
+      return;
     }
+
+    const acao = this.colaborador._id
+      ? this.colaboradoresService.editaColaborador(this.colaborador._id, this.colaborador)
+      : this.colaboradoresService.criaColaborador(this.colaborador);
+
+    acao.subscribe(r => {
+      this.dialogRef.close(true);
+      r.status ? this.toastr.success(r.info) : this.toastr.error(r.info);
+    });
   }
 
   cancelar() {
     this.dialogRef.close(false);
   }
-
 }
