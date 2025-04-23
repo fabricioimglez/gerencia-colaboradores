@@ -1,0 +1,21 @@
+.card-contatos {
+    border: solid 2px;
+    border-radius: 6px;
+    border-color: #afafaf;
+}
+
+.card-info {
+    border-bottom: solid;
+    border-color: #afafaf;
+    margin: 2px;
+}
+
+.brilho-hover {
+    border-radius: 6px;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+  }
+  
+  .brilho-hover:hover {
+    box-shadow: 0 0 10px rgba(0, 170, 255, 0.7), 0 0 20px rgba(0, 170, 255, 0.5);
+    transform: scale(0.99);
+  }

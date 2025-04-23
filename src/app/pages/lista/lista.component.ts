@@ -33,6 +33,8 @@ export class ListaComponent {
     this.colaboradoresService.listaColaboradores().subscribe((r: any) => {
       this.colaboradores = r;
       this.listaColaboradoresFiltrada = [...this.colaboradores];
+      this.listaColaboradoresFiltrada.sort((a, b) => a.nome.localeCompare(b.nome));
+      
     })
   }
 
@@ -76,6 +78,7 @@ export class ListaComponent {
         c.telefone?.toLowerCase().includes(valor) ||
         c.email?.toLowerCase().includes(valor)
       );
+      this.listaColaboradoresFiltrada.sort((a, b) => a.nome.localeCompare(b.nome));
     }
 
     this.sugestoes = [];

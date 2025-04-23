@@ -1,3 +1,25 @@
-<div class="alert alert-primary" role="alert">
-    <button type="button" (click)="direcionaLista()" class="btn btn-primary">Lista de usuários</button>
+<div class="row no-gutters" style="display: flex; align-items: center;flex-direction: column;">
+    <div class="col-6 card-contatos">
+        <div class="d-flex justify-content-center py-4">
+            <h4>Contato dos colaboradores</h4>
+        </div>
+        <div class="row no-gutters card-info">
+            <div class="col-4 d-flex justify-content-center "><strong>nome</strong></div>
+            <div class="col-8 d-flex justify-content-center "><strong>Contatos</strong></div>
+        </div>
+        <div class="row no-gutters brilho-hover" *ngFor="let colaborador of listaColaboradoresFiltrada">
+            <div class="col-4 d-flex justify-content-center">{{colaborador.nome}}</div>
+            <div class="col-4 d-flex justify-content-center">
+                <a [href]="'https://wa.me/+55' + formatarNumero(colaborador.telefone)"
+                    target="_blank"><i class="bi bi-whatsapp pe-1"></i>{{colaborador.telefone}}</a>
+            </div>
+            <div class="col-4 d-flex justify-content-center">
+                <a [href]="'mailto:' + colaborador.email"><i class="bi bi-envelope-at pe-1"></i>{{colaborador.email}}</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-6 d-flex justify-content-end pt-2">
+        <button type="button" class="btn btn-primary btn-sm" (click)="direcionaLista()">Editar Lista</button>
+    </div>
+    
 </div>
