@@ -77,7 +77,7 @@ export class HomeComponent {
     if (temp) {
       return "De " + temp.nome + " - " + temp.sigla
     } else {
-      return ""
+      return "---"
     }
   }
 
