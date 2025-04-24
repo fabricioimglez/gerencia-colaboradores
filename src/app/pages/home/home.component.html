@@ -3,6 +3,20 @@
         <div class="d-flex justify-content-center py-4">
             <h4>Contato dos colaboradores</h4>
         </div>
+        <div class="row no-gutters d-flex justify-content-center align-items-center pb-2">
+            <div class="col-9">
+              <input class="form-control borda-input" type="text" placeholder="Buscar por nome, telefone ou email"
+                (keyup)="onDigitar($event)" (keydown.enter)="buscar()" [value]="filtroDigitado" />
+                <ul *ngIf="sugestoes.length" class="sugestoes">
+                  <li *ngFor="let sugestao of sugestoes" (click)="selecionarSugestao(sugestao)">
+                    {{ sugestao.nome }}
+                  </li>
+                </ul>
+            </div>
+            <div class="col-auto d-flex">
+              <div class="pe-2"><button type="button" class="btn btn-outline-primary"(click)="buscar()">Buscar</button></div>
+            </div>
+          </div>
         <div class="row no-gutters card-info">
             <div class="col-4 d-flex justify-content-center "><strong>nome</strong></div>
             <div class="col-8 d-flex justify-content-center "><strong>Contatos</strong></div>

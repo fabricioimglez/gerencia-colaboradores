@@ -39,4 +39,42 @@ export class HomeComponent {
   formatarNumero(telefone: any) {
     return telefone.replace(/\D/g, '');
   }
+
+  onDigitar(event: Event): void {
+    const valor = (event.target as HTMLInputElement).value.toLowerCase();
+    this.filtroDigitado = valor;
+
+    if (valor) {
+      this.sugestoes = this.colaboradores.filter(c =>
+        c.nome.toLowerCase().includes(valor) ||
+        c.telefone?.toLowerCase().includes(valor) ||
+        c.email?.toLowerCase().includes(valor)
+      );
+    } else {
+      this.sugestoes = [];
+    }
+  }
+
+  buscar(): void {
+    const valor = this.filtroDigitado.trim().toLowerCase();
+
+    if (!valor) {
+      this.listaColaboradoresFiltrada = [...this.colaboradores];
+    } else {
+      this.listaColaboradoresFiltrada = this.colaboradores.filter(c =>
+        c.nome.toLowerCase().includes(valor) ||
+        c.telefone?.toLowerCase().includes(valor) ||
+        c.email?.toLowerCase().includes(valor)
+      );
+      this.listaColaboradoresFiltrada.sort((a, b) => a.nome.localeCompare(b.nome));
+    }
+
+    this.sugestoes = [];
+  }
+
+  selecionarSugestao(colaborador: Colaborador): void {
+    this.filtroDigitado = colaborador.nome;
+    this.buscar();
+  }
+
 }
