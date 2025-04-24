@@ -19,17 +19,11 @@ Acesse em: [http://localhost:4200](http://localhost:4200)
 ## ✨ Funcionalidades
 
 - 🔐 Sistema de **login**
-- 📋 **Listagem** de colaboradores com opção de **edição**
+- 📋 **Listagem** de colaboradores **CRUD completo**
+- 🗺️ localidade dos colaboradores **CRUD completo**
 - 📞 Link direto para **WhatsApp Web**
 - ✉️ Link direto para **enviar e-mail**
-- 💙 Efeitos visuais ao passar o mouse
 - 🌐 Backend Node.js com banco de dados local (NeDB)
-
----
-
-## 🖼️ Preview
-
-> *(Adicione aqui um GIF ou imagem da interface principal do projeto)*
 
 ---
 
@@ -58,5 +52,5 @@ Acesse em: [http://localhost:4200](http://localhost:4200)
 ### 🔧 1. Clonar o repositório
 
 ```bash
-git clone https://github.com/seuusuario/gerencia-colaboradores.git
+git clone [https://github.com/seuusuario/gerencia-colaboradores.git](https://github.com/fabricioimglez/gerencia-colaboradores.git)
 cd gerencia-colaboradores
