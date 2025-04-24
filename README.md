@@ -43,8 +43,9 @@ Uma aplicação completa para **gerenciar contatos de colaboradores**, feita com
 
 ### 🔧 1. Clone o repositório, em seguida
 
-- Opção 1: Execute o arquivo IniciarProjetoPreimairaVez.bat caso seja a primeira vez, ou o arquivo rodaProjeto.bat caso já tenha executado o IniciarProjetoPreimairaVez.bat uma vez.
-- Opção2: Executando manualmente: Dentro da pasta raiz do projeto em um console execute o comando npm install e depois ng serve. em seguida em um segundo console, acesse a pasta back-colaboradoes (esta dentro do projeto) execute o comando npm install e depois node server.js
+Opção 1: Execute o arquivo iniciarProjetoPrimeiraVez.bat caso seja a primeira vez que está iniciando o projeto, ou o arquivo rodaProjeto.bat caso já tenha executado o iniciarProjetoPrimeiraVez.bat anteriormente.
+
+Opção 2: Execução manual: Dentro da pasta raiz do projeto, abra um console e execute o comando npm install, seguido de ng serve. Em seguida, em um segundo console, acesse a pasta back-colaboradores (que está dentro do projeto), execute o comando npm install e depois node server.js.
 
 ## 🚀 Acesso
 
