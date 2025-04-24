@@ -1,41 +1,50 @@
 <div class="row no-gutters" style="display: flex; align-items: center;flex-direction: column;">
-    <div class="col-6 card-contatos">
-        <div class="d-flex justify-content-center py-4">
-            <h4>Contato dos colaboradores</h4>
-        </div>
-        <div class="row no-gutters d-flex justify-content-center align-items-center pb-2">
-            <div class="col-9">
-              <input class="form-control borda-input" type="text" placeholder="Buscar por nome, telefone ou email"
-                (keyup)="onDigitar($event)" (keydown.enter)="buscar()" [value]="filtroDigitado" />
-                <ul *ngIf="sugestoes.length" class="sugestoes">
-                  <li *ngFor="let sugestao of sugestoes" (click)="selecionarSugestao(sugestao)">
-                    {{ sugestao.nome }}
-                  </li>
-                </ul>
-            </div>
-            <div class="col-auto d-flex">
-              <div class="pe-2"><button type="button" class="btn btn-outline-primary"(click)="buscar()">Buscar</button></div>
-            </div>
-          </div>
-        <div class="row no-gutters card-info">
-            <div class="col-4 d-flex justify-content-center "><strong>nome</strong></div>
-            <div class="col-8 d-flex justify-content-center "><strong>Contatos</strong></div>
-        </div>
-        <div class="row no-gutters brilho-hover" *ngFor="let colaborador of listaColaboradoresFiltrada">
-            <div class="col-4 d-flex flex-column justify-content-center">
-              <span>{{colaborador.nome}}</span> 
-              <small class="localidade" *ngIf="colaborador.id_local">{{getLocal(colaborador.id_local)}}</small>
-            </div>
-            <div class="col-4 d-flex justify-content-center align-items-center">
-                <a [href]="'https://wa.me/+55' + formatarNumero(colaborador.telefone)"
-                    target="_blank"><i class="bi bi-whatsapp pe-1"></i>{{colaborador.telefone}}</a>
-            </div>
-            <div class="col-4 d-flex justify-content-center align-items-center">
-                <a [href]="'mailto:' + colaborador.email"><i class="bi bi-envelope-at pe-1"></i>{{colaborador.email}}</a>
-            </div>
-        </div>
+  <div class="col-6 card-contatos">
+    <div class="d-flex justify-content-center py-4">
+      <h4>Contato dos colaboradores</h4>
     </div>
-    <div class="col-6 d-flex justify-content-end pt-2">
-        <button type="button" class="btn btn-primary btn-sm" (click)="direcionaLista()">Editar Lista</button>
+    <div class="row no-gutters d-flex justify-content-center align-items-center pb-2">
+      <div class="col-auto d-flex">
+        <select id="localSelect" class="form-control borda-input" [(ngModel)]="localSelecionado" (change)="buscar()"
+          name="localSelect">
+          <option value="">Selecione local</option>
+          <option *ngFor="let local of locais" [value]="local._id">
+            {{ local.nome }} - {{ local.sigla }}
+          </option>
+        </select>
+      </div>
+      <div class="col-6">
+        <input class="form-control borda-input" type="text" placeholder="Buscar por nome, telefone ou email"
+          (keyup)="onDigitar($event)" (keydown.enter)="buscar()" [value]="filtroDigitado" />
+        <ul *ngIf="sugestoes.length" class="sugestoes">
+          <li *ngFor="let sugestao of sugestoes" (click)="selecionarSugestao(sugestao)">
+            {{ sugestao.nome }}
+          </li>
+        </ul>
+      </div>
+      <div class="col-auto d-flex">
+        <div class="pe-2"><button type="button" class="btn btn-outline-primary" (click)="buscar()">Buscar</button></div>
+      </div>
     </div>
+    <div class="row no-gutters card-info">
+      <div class="col-4 d-flex justify-content-center "><strong>nome</strong></div>
+      <div class="col-8 d-flex justify-content-center "><strong>Contatos</strong></div>
+    </div>
+    <div class="row no-gutters brilho-hover" *ngFor="let colaborador of listaColaboradoresFiltrada">
+      <div class="col-4 d-flex flex-column justify-content-center">
+        <span>{{colaborador.nome}}</span>
+        <small class="localidade" *ngIf="colaborador.id_local">{{getLocal(colaborador.id_local)}}</small>
+      </div>
+      <div class="col-4 d-flex justify-content-center align-items-center">
+        <a [href]="'https://wa.me/+55' + formatarNumero(colaborador.telefone)" target="_blank"><i
+            class="bi bi-whatsapp pe-1"></i>{{colaborador.telefone}}</a>
+      </div>
+      <div class="col-4 d-flex justify-content-center align-items-center">
+        <a [href]="'mailto:' + colaborador.email"><i class="bi bi-envelope-at pe-1"></i>{{colaborador.email}}</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-6 d-flex justify-content-end pt-2">
+    <button type="button" class="btn btn-primary btn-sm" (click)="direcionaLista()">Editar Lista</button>
+  </div>
 </div>

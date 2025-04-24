@@ -17,7 +17,8 @@ export class HomeComponent {
   filtroDigitado: string = '';
   sugestoes: Colaborador[] = [];
   locais: Local[] = [];
-  listaColaboradoresFiltrada: Colaborador[] = []
+  listaColaboradoresFiltrada: Colaborador[] = [];
+  localSelecionado: any = '';
 
   constructor(
     private router: Router,
@@ -57,7 +58,11 @@ export class HomeComponent {
     this.filtroDigitado = valor;
 
     if (valor) {
-      this.sugestoes = this.colaboradores.filter(c =>
+      let temp =  [...this.colaboradores]
+      if (this.localSelecionado != "") {
+       temp = this.colaboradores.filter(c => c.id_local === this.localSelecionado);
+     }
+      this.sugestoes = temp.filter(c =>
         c.nome.toLowerCase().includes(valor) ||
         c.telefone?.toLowerCase().includes(valor) ||
         c.email?.toLowerCase().includes(valor)
@@ -77,11 +82,17 @@ export class HomeComponent {
   }
 
   buscar(): void {
-    const valor = this.filtroDigitado.trim().toLowerCase();
+
+    let valor = this.filtroDigitado.trim().toLowerCase();
+    let temp =  [...this.colaboradores]
+    if (this.localSelecionado != "") {
+       temp = this.colaboradores.filter(c => c.id_local === this.localSelecionado);
+    }
 
     if (!valor) {
-      this.listaColaboradoresFiltrada = [...this.colaboradores];
+      this.listaColaboradoresFiltrada = temp;
     } else {
+
       this.listaColaboradoresFiltrada = this.colaboradores.filter(c =>
         c.nome.toLowerCase().includes(valor) ||
         c.telefone?.toLowerCase().includes(valor) ||
