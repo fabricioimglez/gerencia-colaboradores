@@ -39,6 +39,31 @@ Uma aplicação completa para **gerenciar contatos de colaboradores**, feita com
 
 ---
 
+## 🛠️ Tecnologias Utilizadas
+gerencia-colaboradores/
+├── src/                     # Frontend Angular
+│   ├── app/
+│       └──  pages/
+│            └── home
+│            └── lista
+│            └── local
+│            └── login
+├── back-colaboradores/     # Backend Node.js + NeDB
+│   ├── server.js
+│   ├── routes
+│       └── colaboradores.js
+│       └── local.js
+│       └── login.js
+│   ├── dbColaboradores.js
+│   ├── dbLocal.js
+│   ├── dbUsuarios.js
+│   ├── colaboradores.db
+│   ├── locais.db
+│   ├── usuarios.db
+├── README.md
+
+---
+
 ## 🧑‍💻 Como executar o projeto
 
 ### 🔧 1. Clone o repositório, em seguida
