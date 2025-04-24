@@ -1,6 +1,6 @@
 {"nome":"André","email":"Andre@gmail.com","telefone":"(42) 99800-5995","_id":"IGt1PntbAZtgXChW"}
-{"nome":"Vanessa Camargo Moreti","email":"VanessaMoretti@gmail.com","telefone":"(44) 99852-3256","_id":"KOvHT82ZJmR0UTTz"}
-{"nome":"Carlos Guilherme","email":"carlos.g@gmail.com","telefone":"(48) 99852-3568","_id":"OOQrAUCBRJTiHfEF"}
-{"nome":"Carlos Henrique Fagundes","email":"carlos.t@gmail.com","telefone":"(42) 99852-3254","_id":"h3BvxyEhNWAdFeU0"}
-{"$$deleted":true,"_id":"OOQrAUCBRJTiHfEF"}
 {"nome":"Vanessa Camargo Morett","email":"VanessaMoretti@gmail.com","telefone":"(44) 99852-3256","_id":"KOvHT82ZJmR0UTTz"}
+{"nome":"Carlos Henrique Fagundes","email":"carlos.t@gmail.com","telefone":"(42) 99852-3254","_id":"h3BvxyEhNWAdFeU0"}
+{"nome":"André","email":"Andre@gmail.com","telefone":"(42) 99800-5995","_id":"IGt1PntbAZtgXChW","id_local":"qmLlJmjgc3rH9Ey8"}
+{"nome":"Carlos Henrique Fagundes","email":"carlos.t@gmail.com","telefone":"(42) 99852-3254","_id":"h3BvxyEhNWAdFeU0","id_local":"qmLlJmjgc3rH9Ey8"}
+{"nome":"Vanessa Camargo Morett","email":"VanessaMoretti@gmail.com","telefone":"(44) 99852-3256","_id":"KOvHT82ZJmR0UTTz","id_local":"oHgOQIcVme2BZ9DH"}

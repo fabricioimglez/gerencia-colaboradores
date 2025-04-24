@@ -2,10 +2,22 @@
     <div class="col-12 d-flex justify-content-end">
         <i class="bi bi-x-lg cursor-poiter" (click)="cancelar()"></i>
     </div>
-    <div class="col-12 mb-3">
+    <div class="col-6">
         <label class="form-label">Nome</label>
         <input type="text" (blur)="tocarCampo('nome')" [(ngModel)]="colaborador.nome" class="form-control borda-input">
         <small *ngIf="deveMostrarErro('nome')" class="text-danger">Nome inválido</small>
+    </div>
+    <div class="col-6">
+        <div class="form-group">
+            <label for="localSelect" style="padding-bottom: 7px;">Selecione o local</label>
+            <select id="localSelect" class="form-control borda-input" [(ngModel)]="localSelecionado" (change)="atualizarLocalColaborador()"
+                name="localSelect">
+                <option value="">Sem local</option>
+                <option *ngFor="let local of locais" [value]="local._id">
+                    {{ local.nome }} - {{ local.sigla }}
+                </option>
+            </select>
+        </div>
     </div>
 
     <div class="col-6">
@@ -16,9 +28,9 @@
     </div>
     <div class="col-6">
         <label class="form-label">Telefone</label>
-        <input type="text" (blur)="tocarCampo('telefone')" [(ngModel)]="colaborador.telefone" (input)="formatarTelefone()"
-            (keypress)="permitirSomenteNumeros($event)" class="form-control borda-input" inputmode="numeric"
-            maxlength="15">
+        <input type="text" (blur)="tocarCampo('telefone')" [(ngModel)]="colaborador.telefone"
+            (input)="formatarTelefone()" (keypress)="permitirSomenteNumeros($event)" class="form-control borda-input"
+            inputmode="numeric" maxlength="15">
         <small *ngIf="deveMostrarErro('telefone')" class="text-danger">Telefone inválido</small>
     </div>
 

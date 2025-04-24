@@ -4,6 +4,8 @@ import { Colaborador } from '../../model/colaborador';
 import { ToastrService } from 'ngx-toastr';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ColaboradoresService } from '../../services/colaboradores.service';
+import { LocalService } from '../../../local/service/local.service';
+import { Local } from '../../../local/model/local';
 
 @Component({
   selector: 'app-modal-criar-editar',
@@ -13,6 +15,8 @@ import { ColaboradoresService } from '../../services/colaboradores.service';
 })
 export class ModalCriarEditarComponent {
   colaborador: Colaborador;
+  locais: Local[] = [];
+  localSelecionado: string = '';
   camposTocados: Record<string, boolean> = {};
   flagsInvalidos: Record<string, boolean> = {};
 
@@ -20,9 +24,21 @@ export class ModalCriarEditarComponent {
     @Inject(MAT_DIALOG_DATA) public data: Colaborador | null,
     public dialogRef: MatDialogRef<ModalCriarEditarComponent>,
     private colaboradoresService: ColaboradoresService,
+    private localService: LocalService,
     private toastr: ToastrService,
   ) {
     this.colaborador = data ? data : Colaborador.novo();
+  }
+
+  
+  ngOnInit(): void {
+    if(this.colaborador.id_local) {
+      this.localSelecionado = this.colaborador.id_local
+    }
+    this.localService.listaLocais().subscribe((r: any) => {
+      this.locais = r;
+      this.locais.sort((a, b) => a.nome.localeCompare(b.nome));
+    })
   }
 
   tocarCampo(campo: keyof Colaborador) {
@@ -67,9 +83,16 @@ export class ModalCriarEditarComponent {
     }
   }
 
+  atualizarLocalColaborador() {
+    this.colaborador.id_local = this.localSelecionado 
+  }
+
   salvar() {
     this.validarCampos();
-
+    if(!this.colaborador.telefone && !this.colaborador.email){
+      this.toastr.error('Colaborador deve ter um telefone ou email.');
+      return;
+    }
     if (Object.values(this.flagsInvalidos).some(invalido => invalido)) {
       this.toastr.error('Preencha os campos corretamente.');
       return;

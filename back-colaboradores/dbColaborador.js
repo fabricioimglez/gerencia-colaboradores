@@ -1,9 +1,9 @@
 const Datastore = require('nedb');
 const path = require('path');
 
-const db = new Datastore({
+const dbColaborador = new Datastore({
   filename: path.join(__dirname, 'colaboradores.db'),
   autoload: true,
 });
 
-module.exports = db;
+module.exports = dbColaborador;

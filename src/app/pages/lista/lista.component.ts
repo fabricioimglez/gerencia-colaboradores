@@ -4,6 +4,8 @@ import { ModalCriarEditarComponent } from './components/modal-criar-editar/modal
 import { Colaborador } from './model/colaborador';
 import { ColaboradoresService } from './services/colaboradores.service';
 import { ToastrService } from 'ngx-toastr';
+import { Local } from '../local/model/local';
+import { LocalService } from '../local/service/local.service';
 
 @Component({
   selector: 'app-lista',
@@ -17,16 +19,19 @@ export class ListaComponent {
   filtroDigitado: string = '';
   sugestoes: Colaborador[] = [];
   listaColaboradoresFiltrada: Colaborador[] = []
+  locais: Local[] = [];
 
   constructor(
     public dialog: MatDialog,
     private elementRef: ElementRef,
     private colaboradoresService: ColaboradoresService,
+    private localService: LocalService,
     private toastr: ToastrService,
   ) { }
 
   ngOnInit(): void {
     this.atualizaLista();
+    this.listaLocais();
   }
 
   atualizaLista() {
@@ -34,12 +39,24 @@ export class ListaComponent {
       this.colaboradores = r;
       this.colaboradores.sort((a, b) => a.nome.localeCompare(b.nome));
       this.listaColaboradoresFiltrada = [...this.colaboradores];
-      
-      
     })
   }
 
+  listaLocais() {
+    this.localService.listaLocais().subscribe((r: any) => {
+      this.locais = r;
+      this.locais.sort((a, b) => a.nome.localeCompare(b.nome));
+    });
+  }
 
+  getLocal(id_local: any = '') {
+    let temp = this.locais.find(l => l._id == id_local)
+    if (temp) {
+      return temp.nome + " - " + temp.sigla
+    } else {
+      return "Sem local definido"
+    }
+  }
 
 
   //verifica se o campo saiu de foco

@@ -17,6 +17,14 @@
           <i class="bi bi-person-lines-fill"></i>
         </ng-container>
       </a>
+      <a href="/local" class="nav-link text-white">
+        <ng-container *ngIf="!isCollapsed">
+          <i class="bi bi-geo-alt"></i> Locais
+        </ng-container>
+        <ng-container *ngIf="isCollapsed">
+          <i class="bi bi-geo-alt"></i>
+        </ng-container>
+      </a>
     </div>
     <div class="text-center p-2" *ngIf="!isCollapsed">
       <button class="btn btn-outline-light btn-sm" (click)="toggleMenu()"><i class="bi bi-arrow-left"></i></button>

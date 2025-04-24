@@ -11,6 +11,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { LoginComponent } from './pages/login/login.component';
+import { LocalComponent } from './pages/local/local.component';
+import { ModalCriarEditarLocalComponent } from './pages/local/components/modal-criar-editar-local/modal-criar-editar-local.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { LoginComponent } from './pages/login/login.component';
     HomeComponent,
     ListaComponent,
     ModalCriarEditarComponent,
-    LoginComponent
+    LoginComponent,
+    LocalComponent,
+    ModalCriarEditarLocalComponent
   ],
   imports: [
     BrowserModule,

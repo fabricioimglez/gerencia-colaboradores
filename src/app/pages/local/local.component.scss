@@ -1,0 +1,21 @@
+.sugestoes {
+    list-style: none;
+    padding: 0;
+    margin: 4px 0;
+    border: 1px solid #ccc;
+    max-height: 150px;
+    overflow-y: auto;
+    background: white;
+    position: absolute;
+    width: 300px;
+    z-index: 10;
+  }
+  
+  .sugestoes li {
+    padding: 8px;
+    cursor: pointer;
+  }
+  
+  .sugestoes li:hover {
+    background-color: #5d90fd;
+  }

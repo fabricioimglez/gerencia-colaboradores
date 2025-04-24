@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ColaboradoresService } from '../lista/services/colaboradores.service';
 import { Colaborador } from '../lista/model/colaborador';
+import { LocalService } from '../local/service/local.service';
+import { Local } from '../local/model/local';
 
 @Component({
   selector: 'app-home',
@@ -11,18 +13,28 @@ import { Colaborador } from '../lista/model/colaborador';
 })
 export class HomeComponent {
 
-   colaboradores: Colaborador[] = []
-    filtroDigitado: string = '';
-    sugestoes: Colaborador[] = [];
-    listaColaboradoresFiltrada: Colaborador[] = []
+  colaboradores: Colaborador[] = []
+  filtroDigitado: string = '';
+  sugestoes: Colaborador[] = [];
+  locais: Local[] = [];
+  listaColaboradoresFiltrada: Colaborador[] = []
 
   constructor(
     private router: Router,
-        private colaboradoresService: ColaboradoresService,
-  ) {}
+    private colaboradoresService: ColaboradoresService,
+    private localService: LocalService
+  ) { }
 
   ngOnInit(): void {
     this.consultaLista();
+    this.listaLocais();
+  }
+
+  listaLocais() {
+    this.localService.listaLocais().subscribe((r: any) => {
+      this.locais = r;
+      this.locais.sort((a, b) => a.nome.localeCompare(b.nome));
+    });
   }
 
   consultaLista() {
@@ -52,6 +64,15 @@ export class HomeComponent {
       );
     } else {
       this.sugestoes = [];
+    }
+  }
+
+  getLocal(id_local: any = '') {
+    let temp = this.locais.find(l => l._id == id_local)
+    if (temp) {
+      return "De " + temp.nome + " - " + temp.sigla
+    } else {
+      return ""
     }
   }
 
