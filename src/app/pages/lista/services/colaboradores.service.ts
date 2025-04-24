@@ -7,30 +7,26 @@ import { Colaborador } from '../model/colaborador';
   providedIn: 'root'
 })
 export class ColaboradoresService {
-  private API_URL = 'http://localhost:3000/colaboradores';
+  private API_URL = 'http://localhost:3000/colaboradores/';
 
   constructor(
     private http: HttpClient
   ) {}
 
   listaColaboradores(): Observable<ColaboradoresService[]> {
-    return this.http.get<ColaboradoresService[]>(this.API_URL);
-  }
-
-  consultaColaborador(id: string): Observable<ColaboradoresService> {
-    return this.http.get<ColaboradoresService>(`${this.API_URL}/${id}`);
+    return this.http.get<ColaboradoresService[]>(this.API_URL+"listar-colaboradores");
   }
 
   criaColaborador(colaborador: Colaborador): Observable<ColaboradoresService> {
-    return this.http.post<ColaboradoresService>(this.API_URL, colaborador);
+    return this.http.post<ColaboradoresService>(this.API_URL+"criar-colaborador", colaborador);
   }
 
   editaColaborador(id: string, colaborador: Partial<Colaborador>): Observable<any> {
-    return this.http.put(`${this.API_URL}/${id}`, colaborador);
+    return this.http.put(this.API_URL+"editar-colaborador/"+id, colaborador);
   }
 
   excluiColaborador(id: string): Observable<any> {
-    return this.http.delete(`${this.API_URL}/${id}`);
+    return this.http.delete(this.API_URL+"excluir-colaborador/"+id);
   }
 
 }

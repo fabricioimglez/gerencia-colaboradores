@@ -32,8 +32,9 @@ export class ListaComponent {
   atualizaLista() {
     this.colaboradoresService.listaColaboradores().subscribe((r: any) => {
       this.colaboradores = r;
+      this.colaboradores.sort((a, b) => a.nome.localeCompare(b.nome));
       this.listaColaboradoresFiltrada = [...this.colaboradores];
-      this.listaColaboradoresFiltrada.sort((a, b) => a.nome.localeCompare(b.nome));
+      
       
     })
   }
