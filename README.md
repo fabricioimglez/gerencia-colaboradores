@@ -39,7 +39,8 @@ Uma aplicação completa para **gerenciar contatos de colaboradores**, feita com
 
 ---
 
-## 🛠️ Tecnologias Utilizadas
+## 📁 Estrutura do Projeto – Gerencia Colaboradores
+```bash
 gerencia-colaboradores/
 ├── src/                     # Frontend Angular
 │   ├── app/
@@ -61,7 +62,7 @@ gerencia-colaboradores/
 │   ├── locais.db
 │   ├── usuarios.db
 ├── README.md
-
+```
 ---
 
 ## 🧑‍💻 Como executar o projeto
